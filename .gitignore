@@ -1,0 +1,11 @@
+# Local test build binaries (Never push compiled architecture)
+test_build
+mackayla_local
+*.o
+*.out
+
+# System and editor artifacts
+.DS_Store
+.viminfo
+.xsession-errors
+
