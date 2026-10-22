@@ -21,6 +21,7 @@ namespace Mackayla {
         std::vector<std::string> evasion_keywords;
         std::vector<std::string> fallacy_keywords;
         std::vector<std::string> emotional_keywords;
+        std::vector<std::string> explicit_keywords; // Added tracking variable link
 
         void initialize_matrices();
 

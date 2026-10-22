@@ -120,7 +120,16 @@
             "after everything i have done", "how can you say that", "you are twisting my words", 
             "i was only trying to help"
         ];
-        
+       
+        const exKeywords = [
+            "fuck", "shit", "bitch", "asshole", "dick", 
+            "bastard", "idiot", "stupid", "hate", "pathetic"
+        ];
+     
+        let aggressive = 0;
+        exKeywords.forEach(w => { if(textLower.includes(w)) { aggressive += 35; emotional += 15; tracks.push("AG_VEC: ["+w+"]"); } });
+
+
         evKeywords.forEach(w => { if(textLower.includes(w)) { evasion += 25; tracks.push("EV_VEC: ["+w+"]"); } });
         flKeywords.forEach(w => { if(textLower.includes(w)) { fallacy += 25; tracks.push("FL_VEC: ["+w+"]"); } });
         emKeywords.forEach(w => { if(textLower.includes(w)) { emotional += 25; tracks.push("EM_VEC: ["+w+"]"); } });
@@ -133,16 +142,21 @@
         let signatureTracks = tracks.length === 0 ? " -> NO EXPLICIT LINGUISTIC TRAPS IDENTIFIED.\n" : tracks.map(t => " -> " + t + "\n").join("");
 
         // Output formatting reflecting main.cpp architectures exactly
+
+        let alertStatus = aggressive > 0 ? "\n[ALERT: ACTIVE HOSTILITY ESCALATION DETECTED]\n" : "";
+
         let report = `--------------------------------------------------\n`;
         report += `MACKAYLA // INTERCEPT METRIC TELEMETRY LOGS\n`;
         report += `--------------------------------------------------\n`;
-        report += `DOMINANT THREAT VECTOR : ${primary}\n`;
+        report += `DOMINANT THREAT VECTOR : ${primary}${alertStatus}\n`;
         report += `TACTICAL DEFLECTION    : ${evasion}%\n`;
         report += `RHETORICAL CHALLENGE   : ${fallacy}%\n`;
         report += `PSYCHOLOGICAL LEVERAGE : ${emotional}%\n`;
+        report += `AGGRESSIVE ESCALATION  : ${aggressive}%\n`;
         report += `--------------------------------------------------\n`;
         report += `DETECTION SIGNATURE TRACKS:\n${signatureTracks}`;
         report += `--------------------------------------------------\n`;
+
 
         logs.innerHTML = report.replace(/\n/g, "<br>");
         logs.scrollTop = logs.scrollHeight;

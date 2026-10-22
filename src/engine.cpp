@@ -35,7 +35,13 @@ namespace Mackayla {
             "after everything i have done", "how can you say that", "you are twisting my words", 
             "i was only trying to help" 
         };
+        // Explicit word tracking mapping hostile verbal escalations
+        explicit_keywords = {
+            "fuck", "shit", "bitch", "asshole", "dick", 
+            "bastard", "idiot", "stupid", "hate", "pathetic"
+        };
     }
+
     // Helper utility to convert a string to lowercase for exact token matching
     std::string to_lowercase(const std::string& str) {
         std::string lower_str = str;
@@ -47,6 +53,7 @@ namespace Mackayla {
     AnalysisResult SimulatorEngine::evaluate_text(const std::string& input_text) {
         AnalysisResult result{0, 0, 0, "UNDETERMINED", {}};
         std::string processed_text = to_lowercase(input_text);
+        int aggressive_score = 0;
 
         // Scan for Evasion vectors
         for (const auto& word : evasion_keywords) {
@@ -72,6 +79,15 @@ namespace Mackayla {
             }
         }
 
+        // Scan for Aggressive Escalation vectors
+        for (const auto& word : explicit_keywords) {
+            if (processed_text.find(word) != std::string::npos) {
+                aggressive_score += 35;
+                result.emotional_load_score += 15; // Hostility compounds emotional leverage vectors
+                result.detected_patterns.push_back("AG_VEC: [" + word + "]");
+            }
+        }
+
         // Determine dominant manipulation payload
         if (result.evasion_score >= result.logical_fallacy_score && result.evasion_score >= result.emotional_load_score && result.evasion_score > 0) {
             result.primary_vector = "TACTICAL_DEFLECTION";
@@ -79,6 +95,10 @@ namespace Mackayla {
             result.primary_vector = "RHETORICAL_CHALLENGE";
         } else if (result.emotional_load_score > 0) {
             result.primary_vector = "PSYCHOLOGICAL_LEVERAGE";
+        }
+
+        if (aggressive_score > 0) {
+            result.primary_vector += "\n[ALERT: ACTIVE HOSTILITY ESCALATION DETECTED // METRIC STACK: " + std::to_string(aggressive_score) + "%]";
         }
 
         return result;
