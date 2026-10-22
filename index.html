@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MACKAYLA // RECON COUNTERMEASURE MATRIX</title>
-
-        <!-- OPEN GRAPH METADATA PROTOCOL LINK BLOCKS -->
+    <!-- OPEN GRAPH METADATA PROTOCOL LINK BLOCKS -->
     <meta property="og:title" content="MACKAYLA // RECON COUNTERMEASURE SIMULATOR">
     <meta property="og:description" content="Classified Level 4 decentralized linguistic deconstruction matrix. Parses structural speech manipulation vectors in real-time.">
-    <meta property="og:image" content="https://mackayla.vercel.app">
+    <meta property="og:image" content="https://vercel.app">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mackayla.vercel.app">
+    <meta property="og:url" content="https://vercel.app">
     <meta name="twitter:card" content="summary_large_image">
     <style>
         body {
@@ -105,7 +104,6 @@
     </div>
 </div>
 
-<!-- FIELD MANUAL UI PANEL -->
 <div class="manual-panel">
     <div class="manual-title">// COGNITIVE PROTOCOL FIELD MANUAL</div>
     • <span class="system-green">EV_VEC (Tactical Deflection)</span>: Captures conversational avoidance, reframing tactics, and subject evasion.<br>
@@ -117,7 +115,6 @@
         © 2026 Alistair Fontaine. All Rights Reserved. Mackayla Engine v1.0.0-Academic.
     </div>
 </div>
-
 
 <script>
     function processPayload() {
@@ -131,36 +128,41 @@
         let tracks = [];
         let textLower = rawText.toLowerCase();
 
+        // 1. ADVANCED TACTICAL DEFLECTION LEXICON
         const evKeywords = [
             "listen", "honestly", "reframe", "point is", "believe me", "to be fair", 
             "let's be real", "truely", "essentially", "basically", "exaggerating", 
             "missed the point", "unimportant", "moving on", "whatever", "look who is talking", 
             "you missed the point", "that is irrelevant", "let's change the subject", 
             "i'm not arguing about this", "it's not that deep", "you are making a big deal", 
-            "don't make this about"
+            "don't make this about", "you are taking it out of context"
         ];
 
+        // 2. ENCYCLOPEDIC LOGICAL FALLACY & BINARY FRAMING ARRAYS
         const flKeywords = [
             "always", "never", "everyone", "nobody", "obviously", "clearly", 
             "completely", "totally", "impossible", "perfectly", "ruined", "destroyed", 
             "all the time", "anyways", "undeniably", "either you are with me", 
             "everyone knows that", "it has always been", "there is no alternative", 
             "you are missing the factual", "it is common sense", "without a shadow of doubt", 
-            "purely black and white"
+            "purely black and white", "you prove my point"
         ];
 
+        // 3. STRUCTURAL GASLIGHT & REALITY INVERSION CONSTRUCTIONS
         const emKeywords = [
             "trust", "blame", "fault", "hurt", "deserve", "regret", 
             "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy", 
             "paranoid", "overreacting", "heartless", "i never said that", 
             "you are remembering it wrong", "you are making things up", "if you actually cared", 
             "after everything i have done", "how can you say that", "you are twisting my words", 
-            "i was only trying to help"
+            "i was only trying to help", "you are making yourself the victim"
         ];
 
+        // 4. THE ULTIMATE AGGRESIVE ESCALATION & SLANG PROFANITY DATASET
         const exKeywords = [
-            "fuck", "shit", "bitch", "asshole", "dick", 
-            "bastard", "idiot", "stupid", "hate", "pathetic"
+            "fuck", "shit", "bitch", "asshole", "dick", "bastard", "idiot", "stupid", 
+            "hate", "pathetic", "crap", "damn", "piss", "jerk", "trash", "garbage", 
+            "clown", "shut up", "hell", "suck", "fool", "dumb", "bullshit", "loser"
         ];
 
         evKeywords.forEach(w => { if(textLower.includes(w)) { evasion += 25; tracks.push("EV_VEC: ["+w+"]"); } });
@@ -173,7 +175,6 @@
         else if (fallacy >= evasion && fallacy >= emotional && fallacy > 0) primary = "RHETORICAL_CHALLENGE";
         else if (emotional > 0) primary = "PSYCHOLOGICAL_LEVERAGE";
 
-        // CROSS-VECTOR SYNERGY ALERTS INTERACTION LOGIC
         let synergyAlerts = "";
         if (aggressive > 0 && emotional > 25) {
             synergyAlerts += `<span class="alert-red">\n[CRITICAL WARNING: ACTIVE COGNITIVE OVERWHELM PATTERN IDENTIFIED]</span>\n`;
@@ -207,4 +208,3 @@
 
 </body>
 </html>
-
