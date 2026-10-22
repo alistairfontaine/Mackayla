@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACKAYLA // RECON COUNTERMEASURE MATRIX</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00FF33;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            margin: 0;
+        }
+        .console-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #00FF33;
+            background-color: #0a0a0a;
+            box-shadow: 0 0 15px rgba(0, 255, 51, 0.2);
+        }
+        .console-header {
+            background-color: #00FF33;
+            color: #050505;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+        .console-body {
+            padding: 20px;
+        }
+        .log-output {
+            background-color: #000000;
+            border: 1px solid #222;
+            color: #ffffff;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            font-size: 0.95em;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+        .system-green { color: #00FF33; }
+        .alert-red { color: #FF0033; font-weight: bold; }
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+        .prompt {
+            color: #00FF33;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            background-color: #000000;
+            border: 1px solid #00FF33;
+            color: #00FF33;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+            flex-grow: 1;
+            outline: none;
+            font-size: 1em;
+        }
+        input[type="text"]:focus {
+            box-shadow: 0 0 5px rgba(0, 255, 51, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<div class="console-container">
+    <div class="console-header">[CLASSIFIED SYSTEM LEVEL 4 // MACKAYLA PROTOCOL INTERFACE]</div>
+    <div class="console-body">
+        <div class="log-output" id="consoleLogs"><span class="system-green">[SYSTEM ONLINE]</span> Ready for input extraction arrays.<br>Enter speech parameters below to map structural manipulation configurations...</div>
+        <div class="input-line">
+            <span class="prompt">></span>
+            <input type="text" id="payloadInput" placeholder="Pass telemetry payload text here..." onkeydown="if(event.key === 'Enter') processPayload()">
+        </div>
+    </div>
+</div>
+
+<script>
+    // Emulated WebAssembly Link Layer for immediate serverless static testing
+    function processPayload() {
+        const inputField = document.getElementById('payloadInput');
+        const logs = document.getElementById('consoleLogs');
+        const rawText = inputField.value.trim();
+
+        if (!rawText) return;
+
+        // Visual simulation mapping input strings locally before full WASM pipeline compilation
+        let evasion = 0, fallacy = 0, emotional = 0;
+        let tracks = [];
+        let textLower = rawText.toLowerCase();
+
+        const evKeywords = ["listen", "honestly", "reframe", "point is", "believe me"];
+        const flKeywords = ["always", "never", "everyone", "nobody", "obviously"];
+        const emKeywords = ["trust", "blame", "fault", "hurt", "deserve"];
+
+        evKeywords.forEach(w => { if(textLower.includes(w)) { evasion += 25; tracks.push("EV_VEC: ["+w+"]"); } });
+        flKeywords.forEach(w => { if(textLower.includes(w)) { fallacy += 25; tracks.push("FL_VEC: ["+w+"]"); } });
+        emKeywords.forEach(w => { if(textLower.includes(w)) { emotional += 25; tracks.push("EM_VEC: ["+w+"]"); } });
+
+        let primary = "UNDETERMINED";
+        if (evasion >= fallacy && evasion >= emotional && evasion > 0) primary = "TACTICAL_DEFLECTION";
+        else if (fallacy >= evasion && fallacy >= emotional && fallacy > 0) primary = "RHETORICAL_CHALLENGE";
+        else if (emotional > 0) primary = "PSYCHOLOGICAL_LEVERAGE";
+
+        let signatureTracks = tracks.length === 0 ? " -> NO EXPLICIT LINGUISTIC TRAPS IDENTIFIED.\n" : tracks.map(t => " -> " + t + "\n").join("");
+
+        // Output formatting reflecting main.cpp architectures exactly
+        let report = `--------------------------------------------------\n`;
+        report += `MACKAYLA // INTERCEPT METRIC TELEMETRY LOGS\n`;
+        report += `--------------------------------------------------\n`;
+        report += `DOMINANT THREAT VECTOR : ${primary}\n`;
+        report += `TACTICAL DEFLECTION    : ${evasion}%\n`;
+        report += `RHETORICAL CHALLENGE   : ${fallacy}%\n`;
+        report += `PSYCHOLOGICAL LEVERAGE : ${emotional}%\n`;
+        report += `--------------------------------------------------\n`;
+        report += `DETECTION SIGNATURE TRACKS:\n${signatureTracks}`;
+        report += `--------------------------------------------------\n`;
+
+        logs.innerHTML = report.replace(/\n/g, "<br>");
+        logs.scrollTop = logs.scrollHeight;
+        inputField.value = '';
+    }
+</script>
+
+</body>
+</html>
+
