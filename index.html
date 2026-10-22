@@ -128,41 +128,47 @@
         let tracks = [];
         let textLower = rawText.toLowerCase();
 
-        // 1. ADVANCED TACTICAL DEFLECTION LEXICON
+        // 1. MAXIMUM TACTICAL DEFLECTION & EVASION ARRAYS
         const evKeywords = [
-            "listen", "honestly", "reframe", "point is", "believe me", "to be fair", 
-            "let's be real", "truely", "essentially", "basically", "exaggerating", 
-            "missed the point", "unimportant", "moving on", "whatever", "look who is talking", 
-            "you missed the point", "that is irrelevant", "let's change the subject", 
-            "i'm not arguing about this", "it's not that deep", "you are making a big deal", 
-            "don't make this about", "you are taking it out of context"
+            "listen", "honestly", "reframe", "point is", "believe me", "to be fair",
+            "let's be real", "truely", "essentially", "basically", "exaggerating",
+            "missed the point", "unimportant", "moving on", "whatever", "look who is talking",
+            "you missed the point", "that is irrelevant", "let's change the subject",
+            "i'm not arguing about this", "it's not that deep", "you are making a big deal",
+            "don't make this about", "you are taking it out of context", "drop it",
+            "stop analyzing", "you are reading into", "fixate", "making a scene"
         ];
 
-        // 2. ENCYCLOPEDIC LOGICAL FALLACY & BINARY FRAMING ARRAYS
+        // 2. ENCYCLOPEDIC LOGICAL FALLACY & Sweeping PROJECTIONS
         const flKeywords = [
-            "always", "never", "everyone", "nobody", "obviously", "clearly", 
-            "completely", "totally", "impossible", "perfectly", "ruined", "destroyed", 
-            "all the time", "anyways", "undeniably", "either you are with me", 
-            "everyone knows that", "it has always been", "there is no alternative", 
-            "you are missing the factual", "it is common sense", "without a shadow of doubt", 
-            "purely black and white", "you prove my point"
+            "always", "never", "everyone", "nobody", "obviously", "clearly",
+            "completely", "totally", "impossible", "perfectly", "ruined", "destroyed",
+            "all the time", "anyways", "undeniably", "either you are with me",
+            "everyone knows that", "it has always been", "there is no alternative",
+            "you are missing the factual", "it is common sense", "without a shadow of doubt",
+            "purely black and white", "you prove my point", "typical", "as usual",
+            "just like before", "predictable", "projection", "hypocrite"
         ];
 
-        // 3. STRUCTURAL GASLIGHT & REALITY INVERSION CONSTRUCTIONS
+        // 3. ADVANCED GASLIGHT, REALITY INVERSION, & ULTIMATUM STRUCTURES
         const emKeywords = [
-            "trust", "blame", "fault", "hurt", "deserve", "regret", 
-            "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy", 
-            "paranoid", "overreacting", "heartless", "i never said that", 
-            "you are remembering it wrong", "you are making things up", "if you actually cared", 
-            "after everything i have done", "how can you say that", "you are twisting my words", 
-            "i was only trying to help", "you are making yourself the victim"
+            "trust", "blame", "fault", "hurt", "deserve", "regret",
+            "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy",
+            "paranoid", "overreacting", "heartless", "i never said that",
+            "you are remembering it wrong", "you are making things up", "if you actually cared",
+            "after everything i have done", "how can you say that", "you are twisting my words",
+            "i was only trying to help", "you are making yourself the victim", "if you leave",
+            "you will pay", "you'll be sorry", "force me to", "or else", "don't test me",
+            "watch what happens", "ruin your", "tell everyone your", "make you suffer"
         ];
 
-        // 4. THE ULTIMATE AGGRESIVE ESCALATION & SLANG PROFANITY DATASET
+        // 4. THE ULTIMATE HOSTILITY, THREAT, & AGGRESSIVE SLANG DATASET
         const exKeywords = [
-            "fuck", "shit", "bitch", "asshole", "dick", "bastard", "idiot", "stupid", 
-            "hate", "pathetic", "crap", "damn", "piss", "jerk", "trash", "garbage", 
-            "clown", "shut up", "hell", "suck", "fool", "dumb", "bullshit", "loser"
+            "fuck", "shit", "bitch", "asshole", "dick", "bastard", "idiot", "stupid",
+            "hate", "pathetic", "crap", "damn", "piss", "jerk", "trash", "garbage",
+            "clown", "shut up", "hell", "suck", "fool", "dumb", "bullshit", "loser",
+            "kill", "die", "punch", "smash", "destroy you", "hit you", "slap", "threat",
+            "warned you", "last warning", "count your days", "watch your back", "dead to me"
         ];
 
         evKeywords.forEach(w => { if(textLower.includes(w)) { evasion += 25; tracks.push("EV_VEC: ["+w+"]"); } });
@@ -175,15 +181,16 @@
         else if (fallacy >= evasion && fallacy >= emotional && fallacy > 0) primary = "RHETORICAL_CHALLENGE";
         else if (emotional > 0) primary = "PSYCHOLOGICAL_LEVERAGE";
 
+        // CROSS-VECTOR SYNERGY ALERTS INTERACTION LOGIC
         let synergyAlerts = "";
         if (aggressive > 0 && emotional > 25) {
-            synergyAlerts += `<span class="alert-red">\n[CRITICAL WARNING: ACTIVE COGNITIVE OVERWHELM PATTERN IDENTIFIED]</span>\n`;
+            synergyAlerts += `\n<span class="alert-red">[CRITICAL WARNING: ACTIVE COGNITIVE OVERWHELM PATTERN IDENTIFIED]</span>`;
         }
         if (evasion > 25 && fallacy > 25) {
-            synergyAlerts += `<span class="alert-orange">\n[ALERT: CONTEXTUAL REFRACTURING / SYSTEMIC EVASION OPERATION]</span>\n`;
+            synergyAlerts += `\n<span class="alert-orange">[ALERT: CONTEXTUAL REFRACTURING / SYSTEMIC EVASION OPERATION]</span>`;
         }
         if (emotional > 50 && evasion > 0) {
-            synergyAlerts += `<span class="alert-red">\n[ALERT: HIGH-LEVEL REALITY INVERSION / GASLIGHT MATRIX TRIPPED]</span>\n`;
+            synergyAlerts += `\n<span class="alert-red">[ALERT: HIGH-LEVEL REALITY INVERSION / GASLIGHT MATRIX TRIPPED]</span>`;
         }
 
         let signatureTracks = tracks.length === 0 ? " -> NO EXPLICIT LINGUISTIC TRAPS IDENTIFIED.\n" : tracks.map(t => " -> " + t + "\n").join("");
@@ -203,6 +210,7 @@
         logs.innerHTML = report.replace(/\n/g, "<br>");
         logs.scrollTop = logs.scrollHeight;
         inputField.value = '';
+
     }
 </script>
 
