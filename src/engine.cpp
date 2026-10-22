@@ -11,12 +11,31 @@ namespace Mackayla {
     SimulatorEngine::~SimulatorEngine() {}
 
     void SimulatorEngine::initialize_matrices() {
-        // Core structural vectors tracking specific manipulation signatures
-        evasion_keywords = { "listen", "honestly", "reframe", "point is", "believe me", "to be fair", "let's be real", "truely", "essentially", "basically", "exaggerating", "missed the point", "unimportant", "moving on", "whatever" };
-        fallacy_keywords = { "always", "never", "everyone", "nobody", "obviously", "clearly", "completely", "totally", "impossible", "perfectly", "ruined", "destroyed", "all the time", "anyways", "undeniably" };
-        emotional_keywords = { "trust", "blame", "fault", "hurt", "deserve", "regret", "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy", "paranoid", "overreacting", "heartless" };
+        evasion_keywords = { 
+            "listen", "honestly", "reframe", "point is", "believe me", "to be fair", 
+            "let's be real", "truely", "essentially", "basically", "exaggerating", 
+            "missed the point", "unimportant", "moving on", "whatever", "look who is talking", 
+            "you missed the point", "that is irrelevant", "let's change the subject", 
+            "i'm not arguing about this", "it's not that deep", "you are making a big deal", 
+            "don't make this about" 
+        };
+        fallacy_keywords = { 
+            "always", "never", "everyone", "nobody", "obviously", "clearly", 
+            "completely", "totally", "impossible", "perfectly", "ruined", "destroyed", 
+            "all the time", "anyways", "undeniably", "either you are with me", 
+            "everyone knows that", "it has always been", "there is no alternative", 
+            "you are missing the factual", "it is common sense", "without a shadow of doubt", 
+            "purely black and white" 
+        };
+        emotional_keywords = { 
+            "trust", "blame", "fault", "hurt", "deserve", "regret", 
+            "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy", 
+            "paranoid", "overreacting", "heartless", "i never said that", 
+            "you are remembering it wrong", "you are making things up", "if you actually cared", 
+            "after everything i have done", "how can you say that", "you are twisting my words", 
+            "i was only trying to help" 
+        };
     }
-
     // Helper utility to convert a string to lowercase for exact token matching
     std::string to_lowercase(const std::string& str) {
         std::string lower_str = str;
