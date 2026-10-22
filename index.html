@@ -94,9 +94,9 @@
         let tracks = [];
         let textLower = rawText.toLowerCase();
 
-        const evKeywords = ["listen", "honestly", "reframe", "point is", "believe me"];
-        const flKeywords = ["always", "never", "everyone", "nobody", "obviously"];
-        const emKeywords = ["trust", "blame", "fault", "hurt", "deserve"];
+        const evKeywords = [ "listen", "honestly", "reframe", "point is", "believe me", "to be fair", "let's be real", "truely", "essentially", "basically", "exaggerating", "missed the point", "unimportant", "moving on", "whatever" ];
+        const flKeywords = [ "always", "never", "everyone", "nobody", "obviously", "clearly", "completely", "totally", "impossible", "perfectly", "ruined", "destroyed", "all the time", "anyways", "undeniably" ];
+        const emKeywords = [ "trust", "blame", "fault", "hurt", "deserve", "regret", "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy", "paranoid", "overreacting", "heartless" ];
 
         evKeywords.forEach(w => { if(textLower.includes(w)) { evasion += 25; tracks.push("EV_VEC: ["+w+"]"); } });
         flKeywords.forEach(w => { if(textLower.includes(w)) { fallacy += 25; tracks.push("FL_VEC: ["+w+"]"); } });

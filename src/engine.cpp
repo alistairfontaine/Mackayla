@@ -12,9 +12,9 @@ namespace Mackayla {
 
     void SimulatorEngine::initialize_matrices() {
         // Core structural vectors tracking specific manipulation signatures
-        evasion_keywords = { "listen", "honestly", "reframe", "point is", "believe me" };
-        fallacy_keywords = { "always", "never", "everyone", "nobody", "obviously" };
-        emotional_keywords = { "trust", "blame", "fault", "hurt", "deserve" };
+        evasion_keywords = { "listen", "honestly", "reframe", "point is", "believe me", "to be fair", "let's be real", "truely", "essentially", "basically", "exaggerating", "missed the point", "unimportant", "moving on", "whatever" };
+        fallacy_keywords = { "always", "never", "everyone", "nobody", "obviously", "clearly", "completely", "totally", "impossible", "perfectly", "ruined", "destroyed", "all the time", "anyways", "undeniably" };
+        emotional_keywords = { "trust", "blame", "fault", "hurt", "deserve", "regret", "guilty", "fair", "selfish", "ungrateful", "disappointed", "crazy", "paranoid", "overreacting", "heartless" };
     }
 
     // Helper utility to convert a string to lowercase for exact token matching
