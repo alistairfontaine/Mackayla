@@ -18,6 +18,7 @@
             border: 1px solid #00FF33;
             background-color: #0a0a0a;
             box-shadow: 0 0 15px rgba(0, 255, 51, 0.2);
+            margin-bottom: 20px;
         }
         .console-header {
             background-color: #00FF33;
@@ -35,7 +36,7 @@
             border: 1px solid #222;
             color: #ffffff;
             padding: 15px;
-            height: 300px;
+            height: 320px;
             overflow-y: auto;
             font-size: 0.95em;
             white-space: pre-wrap;
@@ -43,6 +44,7 @@
         }
         .system-green { color: #00FF33; }
         .alert-red { color: #FF0033; font-weight: bold; }
+        .alert-orange { color: #FFA500; font-weight: bold; }
         .input-line {
             display: flex;
             align-items: center;
@@ -65,6 +67,21 @@
         input[type="text"]:focus {
             box-shadow: 0 0 5px rgba(0, 255, 51, 0.5);
         }
+        .manual-panel {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px dashed #555;
+            background-color: #000000;
+            padding: 15px;
+            font-size: 0.85em;
+            color: #888;
+        }
+        .manual-title {
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
@@ -80,8 +97,16 @@
     </div>
 </div>
 
+<!-- FIELD MANUAL UI PANEL -->
+<div class="manual-panel">
+    <div class="manual-title">// COGNITIVE PROTOCOL FIELD MANUAL</div>
+    • <span class="system-green">EV_VEC (Tactical Deflection)</span>: Captures conversational avoidance, reframing tactics, and subject evasion.<br>
+    • <span class="system-green">FL_VEC (Rhetorical Challenge)</span>: Maps absolutist logical fallacies, hyperbole, and rigid binary framing layouts.<br>
+    • <span class="system-green">EM_VEC (Psychological Leverage)</span>: Identifies guilt manipulation, projection, gaslighting strings, and reality inversion.<br>
+    • <span class="system-green">AG_VEC (Aggressive Escalation)</span>: Traps hostile profanity anchors used to emotionally overwhelm or shut down analytical dialogue.
+</div>
+
 <script>
-    // Emulated WebAssembly Link Layer for immediate serverless static testing
     function processPayload() {
         const inputField = document.getElementById('payloadInput');
         const logs = document.getElementById('consoleLogs');
@@ -89,8 +114,7 @@
 
         if (!rawText) return;
 
-        // Visual simulation mapping input strings locally before full WASM pipeline compilation
-        let evasion = 0, fallacy = 0, emotional = 0;
+        let evasion = 0, fallacy = 0, emotional = 0, aggressive = 0;
         let tracks = [];
         let textLower = rawText.toLowerCase();
 
@@ -120,35 +144,40 @@
             "after everything i have done", "how can you say that", "you are twisting my words", 
             "i was only trying to help"
         ];
-       
+
         const exKeywords = [
             "fuck", "shit", "bitch", "asshole", "dick", 
             "bastard", "idiot", "stupid", "hate", "pathetic"
         ];
-     
-        let aggressive = 0;
-        exKeywords.forEach(w => { if(textLower.includes(w)) { aggressive += 35; emotional += 15; tracks.push("AG_VEC: ["+w+"]"); } });
-
 
         evKeywords.forEach(w => { if(textLower.includes(w)) { evasion += 25; tracks.push("EV_VEC: ["+w+"]"); } });
         flKeywords.forEach(w => { if(textLower.includes(w)) { fallacy += 25; tracks.push("FL_VEC: ["+w+"]"); } });
         emKeywords.forEach(w => { if(textLower.includes(w)) { emotional += 25; tracks.push("EM_VEC: ["+w+"]"); } });
+        exKeywords.forEach(w => { if(textLower.includes(w)) { aggressive += 35; emotional += 15; tracks.push("AG_VEC: ["+w+"]"); } });
 
         let primary = "UNDETERMINED";
         if (evasion >= fallacy && evasion >= emotional && evasion > 0) primary = "TACTICAL_DEFLECTION";
         else if (fallacy >= evasion && fallacy >= emotional && fallacy > 0) primary = "RHETORICAL_CHALLENGE";
         else if (emotional > 0) primary = "PSYCHOLOGICAL_LEVERAGE";
 
+        // CROSS-VECTOR SYNERGY ALERTS INTERACTION LOGIC
+        let synergyAlerts = "";
+        if (aggressive > 0 && emotional > 25) {
+            synergyAlerts += `<span class="alert-red">\n[CRITICAL WARNING: ACTIVE COGNITIVE OVERWHELM PATTERN IDENTIFIED]</span>\n`;
+        }
+        if (evasion > 25 && fallacy > 25) {
+            synergyAlerts += `<span class="alert-orange">\n[ALERT: CONTEXTUAL REFRACTURING / SYSTEMIC EVASION OPERATION]</span>\n`;
+        }
+        if (emotional > 50 && evasion > 0) {
+            synergyAlerts += `<span class="alert-red">\n[ALERT: HIGH-LEVEL REALITY INVERSION / GASLIGHT MATRIX TRIPPED]</span>\n`;
+        }
+
         let signatureTracks = tracks.length === 0 ? " -> NO EXPLICIT LINGUISTIC TRAPS IDENTIFIED.\n" : tracks.map(t => " -> " + t + "\n").join("");
-
-        // Output formatting reflecting main.cpp architectures exactly
-
-        let alertStatus = aggressive > 0 ? "\n[ALERT: ACTIVE HOSTILITY ESCALATION DETECTED]\n" : "";
 
         let report = `--------------------------------------------------\n`;
         report += `MACKAYLA // INTERCEPT METRIC TELEMETRY LOGS\n`;
         report += `--------------------------------------------------\n`;
-        report += `DOMINANT THREAT VECTOR : ${primary}${alertStatus}\n`;
+        report += `DOMINANT THREAT VECTOR : ${primary}${synergyAlerts}\n`;
         report += `TACTICAL DEFLECTION    : ${evasion}%\n`;
         report += `RHETORICAL CHALLENGE   : ${fallacy}%\n`;
         report += `PSYCHOLOGICAL LEVERAGE : ${emotional}%\n`;
@@ -156,7 +185,6 @@
         report += `--------------------------------------------------\n`;
         report += `DETECTION SIGNATURE TRACKS:\n${signatureTracks}`;
         report += `--------------------------------------------------\n`;
-
 
         logs.innerHTML = report.replace(/\n/g, "<br>");
         logs.scrollTop = logs.scrollHeight;
